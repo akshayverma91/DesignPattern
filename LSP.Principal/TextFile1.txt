@@ -1,0 +1,44 @@
+﻿ProvisionPartner extends Partner and correctly overrides DisplayPartnerInfo. 
+It first calls the base implementation and then adds its specific ProvisionType information. 
+Any code that expects a Partner and calls DisplayPartnerInfo will get all the expected base 
+information, plus the specialized details if it's a ProvisionPartner. 
+This is adherence to LSP.
+
+
+
+Breaking Liskov Substitution Principle
+Let's introduce an InternalPartner class that violates LSP. Imagine a new requirement where internal partners are never supposed to have external metadata displayed. 
+To enforce this, we might accidentally break the base contract.
+
+The violation occurs in InternalPartner.DisplayPartnerInfo(). The Partner base class's DisplayPartnerInfo method has a clear contract: it displays the name, ID, external status, and all available metadata. By overriding this method in InternalPartner and intentionally omitting the metadata display, we're changing the expected behavior for a client that expects all Partner objects to display their metadata via DisplayPartnerInfo. If you substitute InternalPartner where a 
+Partner is expected, the program might behave unexpectedly by not showing critical metadata.
+
+
+Fixing the LSP Violation with a New Solution
+To fix this, we need to ensure that InternalPartner either adheres to the DisplayPartnerInfo contract, or we refine the base Partner class to better reflect the common behavior. The latter is often the better solution.
+
+Solution: Refine the Base Class and Consider Different Display Responsibilities
+
+The problem arises because DisplayPartnerInfo is trying to do too much for all partner types. If metadata display is not universally required to be public or handled the same way for all partners, it shouldn't be rigidly enforced in the base DisplayPartnerInfo.
+
+
+
+
+Explanation of the Fix:
+
+Refined Base Class Contract: We split the DisplayPartnerInfo method into two more focused methods:
+DisplayCorePartnerInfo(): This method is now responsible only for displaying the fundamental, universally applicable information about a partner (name, ID, external status). Any subclass must adhere to this contract.
+DisplayPublicMetadata(): This is a new, separate method specifically for displaying metadata that is intended for public consumption.
+Explicit Behavior in Subclasses:
+ProvisionPartner can still override DisplayCorePartnerInfo to add its specific details, and it naturally uses DisplayPublicMetadata for its metadata.
+InternalPartner now overrides DisplayCorePartnerInfo to provide its specific core information. Crucially, it also overrides DisplayPublicMetadata to explicitly state that public metadata display is suppressed, fulfilling the contract without breaking the base expectation that some action will be taken when DisplayPublicMetadata is called. It doesn't throw an error or omit the call; it just handles it differently.
+Client Expectations: The ProcessPartnerFixed method now calls both DisplayCorePartnerInfo() and DisplayPublicMetadata(). Any Partner object (including InternalPartner) can be substituted, and both methods will execute without unexpected errors. The behavior for displaying metadata might differ, but the contract (that the method exists and performs a defined action) is still met.
+This solution upholds LSP because InternalPartner now behaves consistently with Partner when its public methods are invoked, even if the specific output or action of DisplayPublicMetadata is tailored for its type. The client doesn't get an unexpected crash or silent omission of behavior; they get a defined response for each method call.
+
+
+Sources
+
+
+
+
+

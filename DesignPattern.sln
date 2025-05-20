@@ -6,6 +6,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Behavioral.Template", "Beha
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Creational.Singleton", "Creational.Singleton\Creational.Singleton.csproj", "{EA09C25A-CBB7-4557-80DA-980BDCE29EE9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LSP.Principal", "LSP.Principal\LSP.Principal.csproj", "{858431DB-A4D1-4F93-B6E0-9A0B6DD15825}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -20,6 +22,10 @@ Global
 		{EA09C25A-CBB7-4557-80DA-980BDCE29EE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EA09C25A-CBB7-4557-80DA-980BDCE29EE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EA09C25A-CBB7-4557-80DA-980BDCE29EE9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{858431DB-A4D1-4F93-B6E0-9A0B6DD15825}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{858431DB-A4D1-4F93-B6E0-9A0B6DD15825}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{858431DB-A4D1-4F93-B6E0-9A0B6DD15825}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{858431DB-A4D1-4F93-B6E0-9A0B6DD15825}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
