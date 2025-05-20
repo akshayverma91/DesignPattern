@@ -1,0 +1,46 @@
+﻿Question
+Did I make correct implementation as I have duplicay of abstraction in 
+IDataAccess<Partner> and DataAccess<Partner>
+
+
+
+Answer
+Yes, your implementation is correct and follows a common and recommended pattern in C# and .NET:
+•	You define an interface (IDataAccess<T>) that specifies the contract for data access operations.
+•	You provide an abstract base class (DataAccess<T>) that implements this interface and provides base logic, while leaving some methods abstract for subclasses to implement.
+•	You then create a concrete class (PartnerDataAccess) that inherits from the abstract base and implements/overrides the required members.
+Why this is not unnecessary duplication:
+•	The interface (IDataAccess<T>) allows you to program against abstractions, making your code more testable and flexible (e.g., for mocking in unit tests).
+•	The abstract class (DataAccess<T>) provides reusable logic and enforces a template for subclasses, reducing code duplication and centralizing shared behavior.
+•	The concrete class (PartnerDataAccess) provides entity-specific logic.
+This pattern is widely used in .NET:
+•	It is common to have both an interface and an abstract base class for data access or service layers.
+•	The interface ensures a contract, while the abstract class provides a partial implementation.
+Summary:
+You have not introduced unnecessary duplication. This is a standard and robust approach 
+for extensible, testable, and maintainable code. If you ever need to provide a different implementation 
+(e.g., for testing or a different data source), you can do so by implementing the interface without inheriting from the abstract class.
+
+reference:
+https://refactoring.guru/design-patterns/template-method
+
+
+Extra
+ Repository Pattern
+Purpose:
+The class acts as a repository, abstracting the data access logic for Partners' entities. It provides CRUD operations and query methods, hiding the details of data storage and retrieval from the rest of the application.
+How:
+Inherits from DataAccess<Partners> and implements IPartnerssDataAccess.
+2. Dependency Injection
+Purpose:
+Dependencies (IDatabase, ICommandProvider, IDataProtector, IJwtAccessor, IPermissionService) are injected via the constructor, promoting loose coupling and testability.
+3. Template Method Pattern
+Purpose:
+The base class (DataAccess<T>) likely defines the skeleton of data access operations, while this class overrides specific methods (like GetSelect, GetFrom, GetItemFromReaderAsync, etc.) to provide entity-specific details.
+How:
+Methods such as GetSelect, GetFrom, and GetFieldValuesAsync are overridden to customize the behavior for Partners.
+4. Decorator Pattern (for Data Protection)
+Purpose:
+The class adds extra behavior (encryption/decryption, secret handling) to the standard data access operations, effectively "decorating" the base CRUD logic with security features.
+How:
+Uses _dataProtector to manage encryption IVs and protect/unprotect sensitive fields.

@@ -1,0 +1,30 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35913.81
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Behavioral.Template", "Behavioral.Template\Behavioral.Template.csproj", "{D9517593-3BE2-4A09-AC99-2D10E2DB3207}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Creational.Singleton", "Creational.Singleton\Creational.Singleton.csproj", "{EA09C25A-CBB7-4557-80DA-980BDCE29EE9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D9517593-3BE2-4A09-AC99-2D10E2DB3207}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D9517593-3BE2-4A09-AC99-2D10E2DB3207}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D9517593-3BE2-4A09-AC99-2D10E2DB3207}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D9517593-3BE2-4A09-AC99-2D10E2DB3207}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EA09C25A-CBB7-4557-80DA-980BDCE29EE9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA09C25A-CBB7-4557-80DA-980BDCE29EE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA09C25A-CBB7-4557-80DA-980BDCE29EE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA09C25A-CBB7-4557-80DA-980BDCE29EE9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2FAEE9F2-0E05-4C00-82D6-2B0CBEF1ED95}
+	EndGlobalSection
+EndGlobal
